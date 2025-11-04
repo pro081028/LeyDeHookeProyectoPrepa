@@ -1,3 +1,3 @@
 titulo: LeyDeHookeProyectoPrepa
 descripcion: Una pagina creada por estudiantes y para estudiantes
- <a href="https://pro081028.github.io/LeyDeHookeProyectoPrepa/">Ir a la pagina...</a>
+ <a href="2parcialproyecto(8_10_28)">Ir a la pagina...</a>
