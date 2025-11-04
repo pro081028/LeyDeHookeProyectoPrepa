@@ -1,0 +1,59 @@
+/* ====== Estilos generales del documento ====== */
+body {
+  margin: 0; /* Elimina los márgenes por defecto del navegador */
+  font-family: "Segoe UI", sans-serif; /* Fuente principal moderna y legible */
+  background: radial-gradient(circle at 30% 30%, #0b0e2c, #020415); /* Fondo con degradado radial oscuro tipo espacial */
+  color: #fff; /* Texto blanco para contraste */
+  text-align: center; /* Centra el texto de todo el cuerpo */
+}
+
+/* ====== Encabezado ====== */
+header {
+  padding: 20px; /* Espaciado interno para separar el contenido del borde */
+}
+
+/* ====== Sección de información del juego (HUD) ====== */
+#hud {
+  display: flex; /* Usa diseño flexible para organizar los elementos en fila */
+  justify-content: space-around; /* Distribuye los elementos con espacio igual entre ellos */
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  background: rgba(255, 255, 255, 0.05); /* Fondo semitransparente claro para destacar sobre el fondo oscuro */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados suaves */
+  width: 80%; /* Ocupa el 80% del ancho de la pantalla */
+  margin: 0 auto; /* Centra horizontalmente el HUD */
+  font-size: 1.1em; /* Tamaño de texto ligeramente más grande */
+}
+
+/* ====== Botón de reinicio ====== */
+#resetBtn {
+  background: #00bfff; /* Azul brillante de fondo */
+  border: none; /* Sin borde */
+  border-radius: 6px; /* Esquinas redondeadas */
+  color: #fff; /* Texto blanco */
+  padding: 8px 15px; /* Espaciado interno (alto y ancho) */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* ====== Efecto al pasar el mouse sobre el botón ====== */
+#resetBtn:hover {
+  background: #00ffff; /* Cambia a un azul más claro tipo cian */
+  color: #000; /* Texto negro para contraste */
+}
+
+/* ====== Lienzo del juego ====== */
+canvas {
+  background: linear-gradient(to top, #001, #223); /* Fondo con degradado vertical oscuro */
+  display: block; /* Elimina espacio inferior y permite centrar con margin auto */
+  margin: 20px auto; /* Espaciado arriba/abajo y centrado horizontal */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #00ffff55; /* Borde cian semitransparente */
+  box-shadow: 0 0 15px #00ffff55; /* Sombra brillante alrededor para efecto neón */
+}
+
+/* ====== Pie de página ====== */
+footer {
+  margin-top: 10px; /* Separación superior respecto al canvas */
+  color: #ccc; /* Texto gris claro */
+  font-size: 0.9em; /* Tamaño de letra más pequeño */
+}

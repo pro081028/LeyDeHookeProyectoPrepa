@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- Documento HTML que presenta información sobre la Ley de Hooke -->
+<html lang="es">
+<head>
+  <!-- Metadatos y estilos del documento -->
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+  <title>Ley de Hooke</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="arte.css" type="text/css"> <!-- Enlace a la hoja de estilos externa -->
+  <style>
+    /* Estilos en línea para el botón de idioma */
+    button#langBtn {
+      position: fixed; /* Fija el botón en la pantalla aunque se haga scroll */
+      top: 10px; /* Separación desde la parte superior */
+      right: 10px; /* Separación desde la parte derecha */
+      padding: 8px 12px; /* Espaciado interior */
+      background: #007bff; /* Color de fondo del botón */
+      color: white; /* Color del texto del botón */
+      border: none; /* Sin borde por defecto */
+      border-radius: 5px; /* Bordes redondeados */
+      cursor: pointer; /* Cursor tipo mano al pasar por encima */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BOTÓN DE IDIOMA -->
+  <!-- Botón con atributos data-es y data-en que almacenan los textos alternativos -->
+  <button id="langBtn" data-es="English" data-en="Español">English</button>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <!-- Título principal con atributos data-* para traducción -->
+    <h1 data-es="Ley de Hooke" data-en="Hooke's Law">Ley de Hooke</h1>
+    <!-- Párrafo introductorio con textos en ambos idiomas como atributos -->
+    <p data-es="La ley de Hooke aplicada en la vida cotidiana" data-en="Hooke's Law applied in everyday life">La ley de Hooke aplicada en la vida cotidiana</p>
+  </header>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav>
+    <ul>
+      <!-- Cada enlace del menú tiene atributos data-es y data-en para alternar el idioma -->
+      <li><a href="#introducción" data-es="Introducción" data-en="Introduction">Introducción</a></li>
+      <li><a href="#antecedentes" data-es="Antecedentes" data-en="Background">Antecedentes</a></li>
+      <li><a href="#galeria" data-es="Galería" data-en="Gallery">Galería</a></li>
+      <li><a href="#conciencia" data-es="Conciencia" data-en="Reflection">Conciencia</a></li>
+      <li><a href="#actividades" data-es="Actividades" data-en="Activities">Actividades</a></li>
+      <li><a href="#equipo" data-es="Equipo" data-en="Team">Equipo</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECCIÓN 1 -->
+  <section id="introducción" class="caja">
+    <!-- Encabezado de sección con atributos de traducción -->
+    <h2 data-es="¿Qué es la ley de Hooke?" data-en="What is Hooke's Law?">¿Qué es la ley de Hooke?</h2>
+    <!-- Párrafo largo con explicación y atributos de traducción -->
+    <p data-es="La Ley de Hooke es un principio fundamental de la física y la ingeniería que describe el comportamiento elástico de los materiales cuando se someten a fuerzas. En términos simples, establece que la deformación de un cuerpo es directamente proporcional a la fuerza aplicada, siempre que no se exceda el límite elástico del material. Matemáticamente, se expresa como: F = k ⋅ x donde F es la fuerza aplicada, k la constante elástica o de rigidez del material, y x la deformación o cambio de longitud. Esta ley es esencial para comprender cómo funcionan resortes, estructuras, puentes, amortiguadores y muchos otros sistemas mecánicos. Además, sirve como base para el estudio de la elasticidad, el diseño de materiales y la ingeniería estructural, ayudando a predecir cómo reaccionarán los objetos ante diferentes cargas." 
+       data-en="Hooke's Law is a fundamental principle of physics and engineering that describes the elastic behavior of materials when subjected to forces. Simply put, it states that the deformation of a body is directly proportional to the applied force, as long as the material's elastic limit is not exceeded. Mathematically, it is expressed as: F = k ⋅ x where F is the applied force, k is the stiffness constant of the material, and x is the deformation or change in length. This law is essential to understand how springs, structures, bridges, shock absorbers, and many other mechanical systems work. It also serves as the basis for studying elasticity, material design, and structural engineering, helping to predict how objects will respond to different loads.">
+      <!-- Texto por defecto en HTML (se mostrará si no se cambia con JS) -->
+      La Ley de Hooke es un principio fundamental de la física y la ingeniería que describe el comportamiento elástico de los materiales cuando se someten a fuerzas. En términos simples, establece que la deformación de un cuerpo es directamente proporcional a la fuerza aplicada, siempre que no se exceda el límite elástico del material. Matemáticamente, se expresa como:
+      <br> 
+      F = k ⋅ x 
+      <br>
+      donde F es la fuerza aplicada, k la constante elástica o de rigidez del material, y x la deformación o cambio de longitud.
+      <br>
+       Esta ley es esencial para comprender cómo funcionan resortes, estructuras, puentes, amortiguadores y muchos otros sistemas mecánicos. Además, sirve como base para el estudio de la elasticidad, el diseño de materiales y la ingeniería estructural, ayudando a predecir cómo reaccionarán los objetos ante diferentes cargas.
+    </p>
+    <!-- Imagen ilustrativa en la sección -->
+    <img src="pic.1.png" alt="ejemplo clasico de la ley de Hooke">
+  </section>
+
+  <!-- SECCIÓN 2 -->
+  <section id="antecedentes" class="caja">
+    <!-- Título de sección con traducción -->
+    <h2 data-es="Antecedentes hitoricos" data-en="Historical Background">Antecedentes hitoricos</h2>
+    <!-- Párrafos con contenido histórico y atributos data-* -->
+    <p data-es="La Ley de Hooke fue enunciada por el físico y arquitecto inglés Robert Hooke en el año 1660, aunque fue publicada formalmente en 1678 en su obra Lectures de Potentia Restitutiva. Hooke descubrió que, al estirar o comprimir un resorte dentro de ciertos límites, la fuerza necesaria para hacerlo era proporcional al cambio en su longitud." 
+       data-en="Hooke's Law was formulated by English physicist and architect Robert Hooke in 1660, although it was formally published in 1678 in his work Lectures de Potentia Restitutiva. Hooke discovered that when stretching or compressing a spring within certain limits, the force required was proportional to the change in its length.">
+      La Ley de Hooke fue enunciada por el físico y arquitecto inglés Robert Hooke en el año 1660, aunque fue publicada formalmente en 1678 en su obra Lectures de Potentia Restitutiva. Hooke descubrió que, al estirar o comprimir un resorte dentro de ciertos límites, la fuerza necesaria para hacerlo era proporcional al cambio en su longitud.
+    </p>
+    <p data-es="Robert Hooke (1635–1703) fue una de las mentes más brillantes de su época, contemporáneo de Isaac Newton y miembro de la Royal Society de Londres. Además de su famosa ley de elasticidad, realizó importantes contribuciones en campos como la microscopía, la astronomía, la arquitectura y la mecánica." 
+       data-en="Robert Hooke (1635–1703) was one of the brightest minds of his time, contemporary of Isaac Newton and a member of the Royal Society of London. In addition to his famous law of elasticity, he made important contributions in fields such as microscopy, astronomy, architecture, and mechanics.">
+      Robert Hooke (1635–1703) fue una de las mentes más brillantes de su época, contemporáneo de Isaac Newton y miembro de la Royal Society de Londres. Además de su famosa ley de elasticidad, realizó importantes contribuciones en campos como la microscopía, la astronomía, la arquitectura y la mecánica.
+    </p>
+    <p data-es="El descubrimiento de la Ley de Hooke marcó un hito en la historia de la física, ya que permitió establecer una relación cuantitativa entre fuerza y deformación, sentando las bases para la comprensión moderna del comportamiento elástico de los materiales y del desarrollo posterior de la mecánica de sólidos." 
+       data-en="The discovery of Hooke's Law marked a milestone in the history of physics, as it established a quantitative relationship between force and deformation, laying the foundations for the modern understanding of the elastic behavior of materials and the subsequent development of solid mechanics.">
+     El descubrimiento de la Ley de Hooke marcó un hito en la historia de la física, ya que permitió establecer una relación cuantitativa entre fuerza y deformación, sentando las bases para la comprensión moderna del comportamiento elástico de los materiales y del desarrollo posterior de la mecánica de sólidos.
+    </p>
+  </section>
+
+  <!-- SECCIÓN 3 (Galería) -->
+  <section id="galeria" class="caja">
+    <!-- Título de galería con traducción -->
+    <h2 data-es="Algunos ejemplos cotidianos de la ley de Hooke:" data-en="Some Examples of Hooke's Law:">Algunos ejemplos cotidianos de la ley de Hooke:</h2>
+    <div class="galeria-flex">
+      <ul>
+        <!-- Cada <li> contiene texto y un div con la imagen; el texto aparece como nodo de texto antes del div -->
+        <li data-es="Los ganchos que usamos para tender la ropa a secar, pues el resorte interno se comprime o estira al abrirse o cerrarse:" data-en="Clothes pegs, since the internal spring compresses or stretches when opening or closing:">
+          Los ganchos que usamos para tender la ropa a secar, pues el resorte interno se comprime o estira al abrirse o cerrarse:
+          <div><img src="pic.3.png" alt="ganchos para ropa"></div>
+        </li>
+        <li data-es="Un amortiguador como el de tu auto usa un resorte que se comprime al absorber impactos:" data-en="A car shock absorber uses a spring that compresses when absorbing impacts:">
+          Un amortiguador como el de tu auto usa un resorte que se comprime al absorber impactos:
+          <div><img src="pic.4.PNG" alt="amortiguador"></div>
+        </li>
+        <li data-es="Un colchón, pues sus resortes internos se comprimen con el peso del cuerpo y recuerdan siempre su forma:" data-en="A mattress, since its internal springs compress under body weight and return to their original shape:">
+          Un colchón, pues sus resortes internos se comprimen con el peso del cuerpo y recuerdan siempre su forma:
+          <div><img src="pic.5.PNG" alt="colchon"></div>
+        </li>
+        <li data-es="Un trampolín, los resortes del borde y el elástico del centro se deforman según la fuerza del salto:" data-en="A trampoline, the edge springs and central elastic deform according to the jump force:">
+          Un trampolín, los resortes del borde y el elástico del centro se deforman según la fuerza del salto:
+          <div><img src="pic.6.PNG" alt="trampolin"></div>
+        </li>
+        <li data-es="Una báscula de resorte con masa colgante, es el ejemplo más clásico de la ley de Hooke:" data-en="A spring scale with hanging mass, the classic example of Hooke's Law:">
+          Una báscula de resorte con masa colgante, es el ejemplo más clásico de la ley de Hooke:
+          <div><img src="pic.7.PNG" alt="báscula"></div>
+        </li>
+        <li data-es="Juguetes de cuerda, estos cuentan con un resorte interno que se deforma al estirar la cuerda y vuelve bruscamente a su posición al soltar:" data-en="Wind-up toys, which have an internal spring that deforms when winding and snaps back when released:">Juguetes de cuerda, estos cuentan con un resorte interno que se deforma al estirar la cuerda y vuelve bruscamente a su posición al soltar:
+          <div><img src="pic.8.PNG" alt="juguete de cuerda"></div>
+        </li>
+        <li data-es="Las bandas elásticas de resistencia, se deforman y estiran según la fuerza aplicada produciendo una resistencia proporcional a la misma:" data-en="Resistance bands, which deform and stretch according to applied force, producing proportional resistance:">
+          Las bandas elásticas de resistencia, se deforman y estiran según la fuerza aplicada produciendo una resistencia proporcional a la misma:
+          <div><img src="pic.9.PNG" alt="bandas de resistencia"></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 (Reflexión) -->
+  <section id="conciencia" class="caja">
+    <!-- Título de sección con traducción -->
+    <h2 data-es="Reflección" data-en="Reflection">Reflección</h2>
+    <!-- Párrafos de reflexión con atributos data-* -->
+    <p data-es="La Ley de Hooke es una regla de la ciencia que nos explica cómo algunos objetos se pueden estirar o comprimir, y luego volver a su forma original, como si tuvieran memoria. Por ejemplo, cuando jalas una liga o saltas en un trampolín, estás viendo la Ley de Hooke en acción. Esta ley dice que mientras más fuerza le hagas a un objeto elástico, más se estirará, pero si no lo fuerzas demasiado, volverá a ser igual que antes." 
+       data-en="Hooke's Law is a scientific rule explaining how some objects can stretch or compress and then return to their original shape, as if they had memory. For example, when you pull a rubber band or jump on a trampoline, you see Hooke's Law in action. This law says that the more force you apply to an elastic object, the more it stretches, but if not overstrained, it returns to its original shape.">
+      La Ley de Hooke es una regla de la ciencia que nos explica cómo algunos objetos se pueden estirar o comprimir, y luego volver a su forma original, como si tuvieran memoria. Por ejemplo, cuando jalas una liga o saltas en un trampolín, estás viendo la Ley de Hooke en acción. Esta ley dice que mientras más fuerza le hagas a un objeto elástico, más se estirará, pero si no lo fuerzas demasiado, volverá a ser igual que antes.
+    </p>
+    <p data-es="Gracias a esta ley, los científicos y los ingenieros pueden diseñar muchas cosas que usamos todos los días. Los resortes en los juguetes, los amortiguadores de los autos, las camas elásticas, las básculas y hasta los relojes funcionan gracias a lo que nos enseña la Ley de Hooke. Incluso los edificios y los puentes se construyen tomando en cuenta esta ley, para que no se rompan fácilmente cuando sopla el viento o hay un temblor." 
+       data-en="Thanks to this law, scientists and engineers can design many everyday objects. Springs in toys, car shock absorbers, trampolines, scales, and even clocks work thanks to what Hooke's Law teaches. Buildings and bridges are also designed with this law in mind, so they don’t easily break in wind or earthquakes.">
+      Gracias a esta ley, los científicos y los ingenieros pueden diseñar muchas cosas que usamos todos los días. Los resortes en los juguetes, los amortiguadores de los autos, las camas elásticas, las básculas y hasta los relojes funcionan gracias a lo que nos enseña la Ley de Hooke. Incluso los edificios y los puentes se construyen tomando en cuenta esta ley, para que no se rompan fácilmente cuando sopla el viento o hay un temblor.
+    </p>
+    <p data-es="En pocas palabras, la Ley de Hooke nos ayuda a entender cómo se comportan los materiales cuando les aplicamos fuerza. Aunque no la veamos, está presente en muchos inventos y objetos que nos hacen la vida más cómoda, segura y divertida. ¡Es un ejemplo increíble de cómo la ciencia está en todo lo que nos rodea y hace que nuestro mundo funcione mejor!" 
+       data-en="In short, Hooke's Law helps us understand how materials behave when force is applied. Even if unseen, it is present in many inventions and objects that make life more comfortable, safe, and fun. An amazing example of how science is everywhere around us, making the world work better!">
+     En pocas palabras, la Ley de Hooke nos ayuda a entender cómo se comportan los materiales cuando les aplicamos fuerza. Aunque no la veamos, está presente en muchos inventos y objetos que nos hacen la vida más cómoda, segura y divertida. ¡Es un ejemplo increíble de cómo la ciencia está en todo lo que nos rodea y hace que nuestro mundo funcione mejor!
+    </p>
+  </section>
+
+  <!-- SECCIÓN 5 (Actividades) -->
+  <section id="actividades" class="caja">
+    <h2 data-es="Conoce más aplicaciones de la ley de hooke" data-en="Learn More Applications of Hooke's Law">Conoce más aplicaciones de la ley de hooke</h2>
+    <!-- Enlace con imagen que dirige a una página externa -->
+    <a href="https://enciclopendia.com/la-ley-de-hooke-concepto-formula-y-aplicaciones-de-la-elasticidad/">
+      <img src="pic.2.PNG" alt="la ley de la-ley-de-hooke-concepto-formula-y-aplicaciones-de-la-elasticidad">
+    </a>
+    <p data-es="Aplicaciones la ley de hooke" data-en="Applications of Hooke's Law">Aplicaciones la ley de hooke</p>
+    <br>
+    <!-- Enlace al juego del proyecto -->
+    <a href="juego9.html" data-es="AngryBird-Hooke" data-en="AngryBird-Hooke">AngryBird-Hooke</a>
+     <p data-es="Juega y aprende! ¡Conoce nuestro juego sobre la ley de Hooke!" data-en="Play & learn! Get to known our game about Hooke's law!">Juega y aprende! ¡Conoce nuestro juego sobre la ley de Hooke!<p>
+  </section>
+
+  <!-- SECCIÓN 6 (Equipo) -->
+  <section id="equipo" class="caja">
+    <h2 data-es="Integrantes del equipo" data-en="Team Members">Integrantes del equipo</h2>
+    <!-- Nombres del equipo con atributos data-* (aunque aquí los nombres son iguales en ambos idiomas) -->
+    <p data-es="Ángel Emilio De la Cerda Balderas" data-en="Ángel Emilio De la Cerda Balderas">Ángel Emilio De la Cerda Balderas</p>
+    <p data-es="María Fernanda Chihuahua Zamora" data-en="María Fernanda Chihuahua Zamora">María Fernanda Chihuahua Zamora</p>
+    <p data-es="Adara Martínez Varela" data-en="Adara Martínez Varela">Adara Martínez Varela</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <!-- Información de escuela y maestra con atributos data-* -->
+    <p data-es="Escuela: CETis #47 | Maestra: Elsie Margarita Figueroa" data-en="School: CETis #47 | Teacher: Elsie Margarita Figueroa">Escuela: CETis #47 | Maestra: Elsie Margarita Figueroa</p>
+  </footer>
+
+  <!-- SCRIPT DE CAMBIO DE IDIOMA -->
+ <script>
+  // Obtener referencia al botón de idioma por su id
+  const langBtn = document.getElementById("langBtn");
+  // Variable que almacena el idioma actual, por defecto "es" (español)
+  let currentLang = "es";
+
+  // Escuchar el evento 'click' del botón para alternar el idioma
+  langBtn.addEventListener("click", () => {
+    // Cambia currentLang entre 'es' y 'en' cada vez que se hace clic
+    currentLang = currentLang === "es" ? "en" : "es";
+    // Actualiza el texto del propio botón usando el atributo data correspondiente
+    langBtn.textContent = langBtn.getAttribute(currentLang === "es" ? "data-es" : "data-en");
+
+    // Selecciona todos los elementos que tienen el atributo data-es
+    document.querySelectorAll("[data-es]").forEach(el => {
+      // Obtiene el texto a mostrar según el idioma actual (data-es o data-en)
+      const newText = el.getAttribute(currentLang === "es" ? "data-es" : "data-en");
+
+      // Buscar el primer nodo de texto dentro del elemento (evita borrar elementos como <img>)
+      const textNode = Array.from(el.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+
+      if (textNode) {
+        // Si existe un nodo de texto, reemplaza solo su contenido textual
+        textNode.textContent = newText;
+      } else {
+        // Si no hay nodo de texto (por ejemplo <h1> con solo texto), usa textContent
+        el.textContent = newText;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

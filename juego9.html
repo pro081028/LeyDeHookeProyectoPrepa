@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres -->
+  <title>AngryBird Hooke: juego de elasticidad</title> <!-- Título de la pestaña -->
+  <link rel="stylesheet" href="artej.0.css"> <!-- Vincula el archivo CSS externo -->
+</head>
+<body>
+  <header>
+    <h1>AngryBird Hooke: juego de elasticidad</h1> <!-- Título principal -->
+    <p>Estira la pelota y apunta hacia los bloques. Solo tienes un intento!.</p> <!-- Subtítulo o instrucción -->
+  </header>
+
+  <section id="hud"> <!-- Panel de información del juego -->
+    <div>
+      <strong>Nivel:</strong> <span id="levelDisplay">1</span> <!-- Muestra el nivel actual -->
+    </div>
+    <div>
+      <strong>Energía:</strong> <span id="energyDisplay">0</span> J <!-- Energía elástica -->
+      &nbsp;|&nbsp;
+      <strong>k:</strong> <span id="kDisplay">0.06</span> N/m <!-- Constante elástica -->
+    </div>
+    <div>
+      <button id="resetBtn">Reiniciar</button> <!-- Botón para reiniciar el juego -->
+    </div>
+  </section>
+
+  <canvas id="gameCanvas" width="900" height="500"></canvas> <!-- Lienzo del juego -->
+
+  <footer>
+    <p>Ley de Hooke: F = −kx | Crea tu trayectoria perfecta </p> <!-- Mensaje educativo -->
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas"); // Obtiene el lienzo
+    const ctx = canvas.getContext("2d"); // Contexto para dibujar en 2D
+
+    // ======= Variables del juego =======
+    let level = 1; // Nivel inicial
+    const gravity = 0.3; // Gravedad del juego
+    let k = 0.06; // Constante elástica base
+    const anchor = { x: 150, y: 400 }; // Punto fijo de la banda elástica
+    let bird = { x: 150, y: 400, vx: 0, vy: 0, flying: false }; // Objeto que representa al proyectil
+    let dragging = false; // Control del arrastre del proyectil
+
+    const energyDisplay = document.getElementById("energyDisplay"); // Muestra energía
+    const levelDisplay = document.getElementById("levelDisplay"); // Muestra nivel
+    const kDisplay = document.getElementById("kDisplay"); // Muestra constante elástica
+
+    // ======= Niveles =======
+    const levels = [ // Cada nivel tiene objetivos y obstáculos
+      { targets: [{ x: 700, y: 420 }], obstacles: [] },
+      { targets: [{ x: 600, y: 420 }, { x: 750, y: 380 }], obstacles: [{ x: 680, y: 430, w: 50, h: 20 }] },
+      { targets: [{ x: 550, y: 430 }, { x: 700, y: 410 }, { x: 850, y: 380 }], obstacles: [{ x: 640, y: 430, w: 60, h: 20 }, { x: 780, y: 400, w: 60, h: 20 }] },
+      { targets: [{ x: 650, y: 430 }, { x: 720, y: 400 }], obstacles: [{ x: 680, y: 420, w: 60, h: 40 }] },
+      { targets: [{ x: 550, y: 430 }, { x: 700, y: 410 }, { x: 850, y: 390 }, { x: 750, y: 360 }], obstacles: [{ x: 630, y: 430, w: 60, h: 30 }, { x: 780, y: 400, w: 70, h: 25 }] },
+      { targets: [{ x: 500, y: 420 }, { x: 650, y: 400 }, { x: 800, y: 380 }], obstacles: [{ x: 600, y: 430, w: 80, h: 25 }, { x: 730, y: 410, w: 80, h: 25 }] },
+      { targets: [{ x: 550, y: 420 }, { x: 700, y: 400 }, { x: 850, y: 370 }], obstacles: [{ x: 640, y: 430, w: 80, h: 40 }, { x: 780, y: 390, w: 60, h: 30 }] },
+      { targets: [{ x: 500, y: 430 }, { x: 600, y: 400 }, { x: 700, y: 370 }, { x: 800, y: 340 }], obstacles: [{ x: 550, y: 420, w: 60, h: 40 }, { x: 700, y: 390, w: 60, h: 40 }] },
+      { targets: [{ x: 650, y: 430 }, { x: 750, y: 400 }, { x: 850, y: 370 }, { x: 900, y: 340 }], obstacles: [{ x: 700, y: 420, w: 60, h: 40 }, { x: 820, y: 380, w: 60, h: 30 }] },
+      { targets: [{ x: 520, y: 430 }, { x: 640, y: 400 }, { x: 760, y: 370 }, { x: 880, y: 340 }, { x: 800, y: 300 }], obstacles: [{ x: 600, y: 420, w: 70, h: 40 }, { x: 740, y: 390, w: 70, h: 40 }, { x: 860, y: 360, w: 70, h: 30 }] }
+    ];
+
+    levels.forEach(l => l.targets.forEach(t => t.hit = false)); // Inicializa los objetivos sin golpear
+
+    // ======= Controles =======
+    const resetBtn = document.getElementById("resetBtn");
+    resetBtn.addEventListener("click", resetGame); // Asigna función al botón reiniciar
+
+    function resetGame() { // Reinicia variables del juego
+      bird = { x: 150, y: 400, vx: 0, vy: 0, flying: false };
+      levels.forEach(l => l.targets.forEach(t => t.hit = false));
+      dragging = false;
+      k = 0.06;
+      updateEnergy(0);
+      updateK();
+      level = 1;
+      levelDisplay.textContent = level;
+    }
+
+    // Eventos del mouse para controlar el disparo
+    canvas.addEventListener("mousedown", e => {
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      if (Math.hypot(bird.x - mx, bird.y - my) < 25 && !bird.flying) dragging = true;
+    });
+
+    canvas.addEventListener("mousemove", e => {
+      if (dragging) {
+        const rect = canvas.getBoundingClientRect();
+        bird.x = e.clientX - rect.left;
+        bird.y = e.clientY - rect.top;
+        const dx = anchor.x - bird.x;
+        const dy = anchor.y - bird.y;
+        const stretch = Math.hypot(dx, dy); // Longitud del estiramiento
+        const energy = 0.5 * (k * 1000) * (stretch / 50) ** 2; // Energía elástica
+        updateEnergy(energy.toFixed(1));
+      }
+    });
+
+    canvas.addEventListener("mouseup", () => {
+      if (dragging) {
+        const dx = anchor.x - bird.x;
+        const dy = anchor.y - bird.y;
+        bird.vx = dx * k * 10;
+        bird.vy = dy * k * 10;
+        bird.flying = true;
+        dragging = false;
+      }
+    });
+
+    function updateEnergy(val) { // Actualiza energía mostrada
+      energyDisplay.textContent = val;
+    }
+
+    function updateK() { // Actualiza constante k mostrada
+      kDisplay.textContent = k.toFixed(2);
+    }
+
+    // ======= Funciones de dibujo =======
+    function drawGround() { // Dibuja el suelo
+      ctx.fillStyle = "#223";
+      ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+    }
+
+    function drawSpring() { // Dibuja la banda elástica
+      ctx.strokeStyle = dragging ? "#00ffcc" : "#0088ff";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(anchor.x, anchor.y);
+      ctx.lineTo(bird.x, bird.y);
+      ctx.stroke();
+    }
+
+    function drawbird() { // Dibuja el proyectil
+      ctx.beginPath();
+      ctx.arc(bird.x, bird.y, 20, 0, Math.PI * 2);
+      ctx.fillStyle = "#ffcc00";
+      ctx.fill();
+      ctx.strokeStyle = "#fff";
+      ctx.stroke();
+    }
+
+    function drawTargets() { // Dibuja los objetivos
+      levels[level - 1].targets.forEach(t => {
+        ctx.fillStyle = t.hit ? "#444" : "#ff4444";
+        ctx.fillRect(t.x, t.y - 40, 30, 40);
+      });
+    }
+
+    function drawObstacles() { // Dibuja obstáculos
+      levels[level - 1].obstacles.forEach(o => {
+        ctx.fillStyle = "#00ffff55";
+        ctx.fillRect(o.x, o.y - o.h, o.w, o.h);
+      });
+    }
+
+    // ======= Actualización del proyectil =======
+    function updatebird() {
+      if (bird.flying) {
+        bird.vy += gravity; // Aplica gravedad
+        bird.x += bird.vx;
+        bird.y += bird.vy;
+
+        if (bird.y > canvas.height - 20) { // Rebote en el suelo
+          bird.vy *= -0.5;
+          bird.y = canvas.height - 20;
+        }
+
+        // Colisión con obstáculos
+        levels[level - 1].obstacles.forEach(o => {
+          if (bird.x > o.x && bird.x < o.x + o.w && bird.y + 20 > o.y - o.h) {
+            bird.vy *= -0.6;
+          }
+        });
+
+        // Colisión con objetivos
+        levels[level - 1].targets.forEach(t => {
+          if (!t.hit && bird.x > t.x && bird.x < t.x + 30 && bird.y > t.y - 40) {
+            t.hit = true;
+          }
+        });
+
+        // Avanza al siguiente nivel si todos los objetivos están destruidos
+        if (levels[level - 1].targets.every(t => t.hit)) {
+          if (level < levels.length) {
+            level++;
+            levelDisplay.textContent = level;
+            bird = { x: 150, y: 400, vx: 0, vy: 0, flying: false };
+            k += 0.01; // Incrementa dificultad
+            updateK();
+          } else {
+            showWinMessage(); // Gana el juego
+          }
+        }
+      }
+    }
+
+    function showWinMessage() { // Mensaje al completar todos los niveles
+      ctx.fillStyle = "rgba(0,0,0,0.6)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#fff";
+      ctx.font = "40px Arial";
+      ctx.fillText("¡Has completado todos los niveles!", 130, 250);
+      ctx.fillText("Eres un maestro de la Ley de Hooke!", 130, 300);
+    }
+
+    // ======= Bucle principal del juego =======
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia pantalla
+      drawGround();
+      drawSpring();
+      drawbird();
+      drawObstacles();
+      drawTargets();
+      updatebird();
+      requestAnimationFrame(loop); // Llama al bucle de animación
+    }
+
+    updateK(); // Inicializa valor de k
+    loop(); // Inicia el juego
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+body {
+  font-family: 'Cooper Black', sans-serif; /* Fuente principal del sitio */
+  margin: 0; /* Elimina márgenes por defecto */
+  background-color: #de4c8a; /* Color de fondo general */
+  color: #333; /* Color de texto principal */
+}
+
+header {
+  background-color: #de4c8a; /* Fondo del encabezado */
+  color: white; /* Texto en blanco para contraste */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Centra el contenido del encabezado */
+}
+
+nav {
+  background-color: #e40078; /* Fondo del menú de navegación */
+}
+
+nav ul {
+  list-style: none; /* Quita los puntos de la lista */
+  display: flex; /* Coloca los elementos en una fila */
+  justify-content: center;  /* Centra los enlaces horizontalmente */
+  padding: 50px; /* Espaciado interno del contenedor de navegación */
+  margin: 0; /* Elimina márgenes por defecto */
+}
+
+nav li {
+  margin: 0 15px; /* Espaciado entre los enlaces */
+}
+
+nav a {
+  color: white; /* Enlaces en blanco */
+  text-decoration: none; /* Quita el subrayado */
+  font-weight: bold; /* Hace el texto más grueso */
+}
+
+.caja {
+  font-family: 'Cooper Black', sans-serif; /* Mantiene coherencia con el resto del sitio */
+  color: #333; /* Texto oscuro para contraste */
+  background-color: white; /* Fondo blanco de las secciones */
+  margin-bottom: 20px; /* Espaciado inferior entre cajas */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 0 10px #ccc; /* Sombra suave para resaltar las cajas */
+}
+
+.galeria-flex {
+  display: flex; /* Usa diseño flexible */
+  justify-content: space-around; /* Distribuye las imágenes uniformemente */
+  flex-wrap: wrap; /* Permite que las imágenes bajen de línea si es necesario */
+  gap: 20px; /* Espaciado entre imágenes */
+}
+
+.galeria-flex img {
+  width: 300px; /* Tamaño fijo de las imágenes */
+  border-radius: 8px; /* Bordes redondeados en las imágenes */
+  box-shadow: 0 0 5px #888; /* Sombra ligera debajo de las imágenes */
+}
+
+footer {
+  font-family: 'Broadway', sans-serif; /* Fuente diferente para el pie de página */
+  color: #333; /* Color base (sobrescrito por el siguiente color) */
+  background-color: #ec53a0; /* Fondo del pie de página */
+  color: white; /* Texto blanco para contraste */
+  text-align: center; /* Centra el texto del pie */
+  padding: 10px; /* Espaciado interno */
+  margin-top: 20px; /* Separación del contenido anterior */
+}
